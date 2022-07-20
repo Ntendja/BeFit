@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<style>
+body {
+  background-color: #f5f5f5;
+}
+</style>
+<body class"min-h-page flex items-center p-12">
+    <div class="flex justify-center container mx-auto">
+         <div class="w-full max-w-sm my-10 p-6 m-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+             <div class="flex justify-center items-center w-full">
+                 <img class="" src="/imgs/welcome/scatter_plot.svg" width="90px" height="90px" >
+             </div>
+            <h1 class="text-3xl font-semibold text-center text-gray-700 dark:text-white">BeFit</h1>
+
+        <form class="mt-6" action="exercises" id="traningForm" method= "POST">
+            <div>
+                <label for="name" class="block text-sm text-gray-800 dark:text-gray-200">Exercise</label>
+                <input type="text" name="name" readonly value="<%= name %>"
+                    class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
+            </div>
+             <div>
+                <label for="session_length" class="block text-sm text-gray-800 dark:text-gray-200">Session Length</label>
+                <input type="number" name="session_length"
+                    class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
+            </div>
+             <div>
+                <label for="break_length" class="block text-sm text-gray-800 dark:text-gray-200">Break Length</label>
+                <input type="number" name="break_length"
+                    class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
+            </div>
+            
+            <div class="mt-6">
+                <button type="submit"
+                    class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-900 focus:outline-none focus:bg-purple-900">
+                    Create Training
+                </button>
+            </div>
+        </form>
+    </div>
+        
+   </div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<style>
+body {
+  background-color: #f5f5f5;
+}
+.pomodoro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;  
+  padding-top: 15px;
+  padding-bottom: 25px;  
+}
+p {
+  text-align: center;
+}
+.flip-clock-wrapper{
+  max-width: 460px;
+  margin: 3em auto 2em;
+  display: flex;
+  justify-content: center;
+}
+.col-md-4{
+  display: flex;
+  justify-content: center;
+}
+.col-md-2{
+  display: flex;
+  justify-content: center;
+  height: 34px;
+  align-items: center;
+}
+.counter{
+  display: flex;
+  justify-content: center;
+}
+.clock{
+  margin-top: 30px;
+}
+.container {
+  width: 500px;
+}
+.middle{
+    display:inline-block;
+}
+#btns{
+  display: flex;
+  justify-content: center;
+}
+#stop {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.btn {
+  background-color: #333333;
+  color: #CCCCCC;
+}
+#sessInc, #sessDec, #breakInc, #breakDec {  
+  font-weight: bold;
+}
+#stats {
+  background-color: #333333;
+  width: 220px;
+  height: 70px;  
+  border-radius: 10px;
+  color: #CCCCCC;
+  font-size: 45px;
+  text-align: center;
+}
+#statRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+</style>
+<body class"min-h-page flex items-center p-12">
+    <input hidden value="<%= Name %>" id="timer_name"> 
+    <input hidden value="<%= Pause %>" id="timer_pause">    
+    <input hidden value="<%= Interval %>" id="timer_interval">    
+
+    
+    <div class="max-w-sm mx-auto my-5 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+      <div class="pomodoro bg-white shadow-lg">
+          <div id="clock" class="row">
+            <div class="timer"><div class="middle"></div></div>
+          </div>
+          <div class="row" id="statRow">
+            <div id="stats"></div>
+          </div>
+          <div class="container">
+            <div class="row" id="btns">
+              <button type="button" id="start" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Start</button>
+              <button type="button"  id="stop" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Stop</button>
+              <button type="button"  id="clear" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Clear</button>
+            </div>
+          </div>
+    </div>
+ </div>
+ 
+ <script>
+$(document).ready(function(){
+  var countS = + document.getElementById("timer_interval").value;
+  $("#session").html(countS);
+  var countB = + document.getElementById("timer_pause").value;
+  $("#break").html(countB);
+  var pos =document.getElementById("timer_name").value.toUpperCase(); 
+  var countLama;
+  var posLama;
+  var count;
+  $("#stats").html(pos);
+  var clock = $(".timer").FlipClock(0, {
+    countdown: true,
+    clockFace: 'MinuteCounter',
+    autoStart: false,
+    callbacks: {
+      interval: function(){
+        if (clock.getTime() == 0){
+          if (pos == "session"){
+            clock.setTime(countB*60);
+            clock.start();
+            pos = "break";
+            $("#stats").html(pos);
+          } else if (pos == "break"){
+            clock.setTime(countS*60);
+            clock.start();
+            pos = "session";
+            $("#stats").html(pos);
+          }
+        }        
+      }
+    }
+  })  
+  //SESSION
+  $("#sessInc").on("click", function(){
+    if ($("#session").html() > 0){
+      countS = parseInt($("#session").html());
+      countS+=1;
+      $("#session").html(countS);
+      //clock.setTime(countS*60);
+    }
+  });
+  $("#sessDec").on("click", function(){
+    if ($("#session").html() > 1){
+      countS = parseInt($("#session").html());
+      countS-=1;
+      $("#session").html(countS);
+      //clock.setTime(countS*60);
+    }
+  });
+  //BREAK
+  $("#breakInc").on("click", function(){
+    if ($("#break").html() > 0){
+      countB = parseInt($("#break").html());
+      countB+=1;
+      $("#break").html(countB);
+    }    
+  });
+  $("#breakDec").on("click", function(){
+    if ($("#break").html() > 1){
+      countB = parseInt($("#break").html());
+      countB-=1;
+      $("#break").html(countB);
+    }
+  });  
+  $("#start").on("click", function(){
+    if (count != countS || clock.getTime()==0){
+      clock.setTime(countS*60);
+      pos="session";
+      $("#stats").html(pos);
+    } else {
+      pos = posLama;
+      $("#stats").html(pos);
+    }
+    count = countS;    
+    clock.start();    
+  });
+  $("#stop").on("click", function(){
+    clock.stop();
+    countLama = clock.getTime();
+    posLama = $("#stats").html();
+  });
+  $("#clear").on("click", function(){
+    clock.stop();
+    $("#stats").html(pos);
+    clock.setTime(0);
+  });
+});
+ </script>
+</body>
+</html>
+    
+    
+    

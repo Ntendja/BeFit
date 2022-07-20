@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<style>
+body {
+  background-color: #f5f5f5;
+}
+.training {
+ background: rgba(75, 6, 100, 0.31);
+ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ border-radius: 15px;
+}
+.yoga {
+background: rgba(119, 7, 137, 0.31);
+ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ border-radius: 15px;
+}
+.eat_water {
+background: rgba(159, 27, 162, 0.31);
+ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ border-radius: 15px;
+}
+.halters {
+background: rgba(10, 244, 34, 0.22);
+ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ border-radius: 15px;
+}
+.running {
+background: rgba(208, 237, 31, 0.4);
+ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ border-radius: 15px;
+}
+.cycling {
+background: rgba(27, 57, 162, 0.22);
+ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ border-radius: 15px;
+}
+</style>
+<body class"min-h-page flex items-center p-12">
+   <div class="flex flex-col container mx-auto p-6">
+       <div class="flex items-center justify-center">
+           <span class="text-2xl font-bold hover:underline">Let's get going</span>
+        </div>
+       <div class="flex flex-col">
+           <h1 class="text-2xl font-bold">Categories</h4>
+           <div class="flex flex-col space-y-12 mt-10">
+               <div class="flex justify-between p-4 training">
+                   <div class="flex flex-col space-y-4">
+                       <h1 class="text-2xl">Training</h1>
+                        <a type="button" href="/exercises?type=training">
+                            <button class="bg-white p-4 capitalize text-lg rounded-2xl mt-4 ">Start Now</button>
+                        </a>
+                   </div>
+                   <img src="/imgs/welcome/sports_gymnastics_black.svg" width="40x" height="40px"></img>
+               </div>
+               
+               <div class="flex justify-between p-4 yoga">
+                   <div class="flex flex-col space-y-4">
+                       <h1 class="text-2xl">Yoga</h1>
+                        <a type="button" href="/exercises?type=yoga">
+                            <button class="bg-white p-4 capitalize text-lg rounded-2xl mt-4 ">Start Now</button>
+                        </a>
+                   </div>
+                   <img src="/imgs/welcome/self_improvement_black.svg" width="40x" height="40px"></img>
+               </div> 
+               
+               <div class="flex justify-between p-4 eat_water">
+                   <div class="flex flex-col space-y-4">
+                       <h1 class="text-2xl">Eat & Water</h1>
+                        <a type="button" href="/exercises?type=eat_water">
+                            <button class="bg-white p-4 capitalize text-lg rounded-2xl mt-4 ">Start Now</button>
+                        </a>
+                   </div>
+                   <img src="/imgs/welcome/restaurant_menu_black.svg" width="40x" height="40px"></img>
+               </div> 
+               
+               <div class="flex justify-between p-4 halters">
+                   <div class="flex flex-col space-y-4">
+                       <h1 class="text-2xl">Halters</h1>
+                       <a type="button" href="/exercises?type=halters">
+                            <button class="bg-white p-4 capitalize text-lg rounded-2xl mt-4 ">Start Now</button>
+                        </a>
+                   </div>
+                   <img src="/imgs/welcome/fitness_center_black.svg" width="40x" height="40px"></img>
+               </div> 
+                <div class="flex justify-between p-4 running">
+                   <div class="flex flex-col space-y-4">
+                       <h1 class="text-2xl">Running</h1>
+                        <a type="button" href="/exercises?type=running">
+                            <button class="bg-white p-4 capitalize text-lg rounded-2xl mt-4 ">Start Now</button>
+                        </a>
+                   </div>
+                   <img src="/imgs/welcome/directions_run_black_.svg" width="40x" height="40px"></img>
+               </div>
+                <div class="flex justify-between p-4 cycling">
+                   <div class="flex flex-col space-y-4">
+                       <h1 class="text-2xl">Cycling</h1>
+                        <a type="button" href="/exercises?type=cycling">
+                            <button class="bg-white p-4 capitalize text-lg rounded-2xl mt-4 ">Start Now</button>
+                        </a>
+                   </div>
+                   <img src="/imgs/welcome/directions_bike_black.svg" width="40x" height="40px"></img>
+               </div> 
+           </div>
+       </div>
+   </div>
+</body>
+</html>
